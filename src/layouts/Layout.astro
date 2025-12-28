@@ -1,128 +1,68 @@
 ---
-import SocialIcons from "../components/SocialIcons.jsx";
 import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+	title, 
+	description = "Sitio web oficial de Yakin Dario, ingeniero en telecomunicaciones, desarrollador web y entusiasta de la nube." 
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Yakin Dario - Cloud Engineer DevOps - Desarrollador web</title>
-		<meta
-			name="description"
-			content="Sitio web oficial de Yakin Dario, ingeniero en telecomunicaciones, desarrollador web y entusiasta de la nube, basado en Puerto Vallarta, México."
-		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		<meta name="author" content="Yakin Dario" />
-		<meta
-			name="keywords"
-			content="Yakin Dario, Yakin, desarrollador, desarrollador web, ingeniero, Puerto Vallarta, cloud, programador, portafolio"
-		/>
-		<meta name="robots" content="index, follow" />
-
-		<!-- OG para redes sociales -->
-		<meta
-			property="og:title"
-			content="Yakin Dario - Developer & Engineer"
-		/>
-		<meta
-			property="og:description"
-			content="Conoce a Yakin Dario, ingeniero en telecomunicaciones y desarrollador web."
-		/>
-		<meta name="author" content="Yakin Dario" />
-		<meta
-			name="keywords"
-			content="Yakin Dario, Yakin, yakindario, desarrollador, portafolio, ingeniero, cloud, web developer, Puerto Vallarta"
-		/>
-		<meta name="robots" content="index, follow" />
-		<meta property="og:image" content="/yakindario1.jpeg" />
-		<meta property="og:url" content="https://tusitio.com" />
+		<meta name="keywords" content="Yakin Dario, DevOps, Cloud Engineer, Puerto Vallarta" />
+		
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://tusitio.com/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/yakindario1.jpeg" />
 
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta
-			name="twitter:title"
-			content="Yakin Dario - Developer & Engineer"
-		/>
-		<meta
-			name="twitter:description"
-			content="Portafolio de Yakin Dario, desarrollador web y apasionado por la tecnología."
-		/>
-		<meta name="twitter:image" content="/yakindario1.jpeg" />
-
-		<link rel="canonical" href="https://tusitio.com" />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://tusitio.com/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/yakindario1.jpeg" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Yakin Dario",
+				"url": "https://yakindario.com", 
+				"image": "https://yakindario.com/yakindario.jpeg",
+				"jobTitle": "Cloud Engineer DevOps & Desarrollador Web",
+				"description": "Ingeniero en telecomunicaciones, desarrollador web y entusiasta de la nube, en Puerto Vallarta.",
+				"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Puerto Vallarta",
+				"addressRegion": "Jalisco",
+				"addressCountry": "MX"
+				},
+				"sameAs": [
+				"https://www.linkedin.com/in/yakindario/",
+				"https://github.com/yakindario",
+				"https://x.com/yakindario",
+				"https://www.instagram.com/yakindario/"
+				"https://yakindario.me"
+				]
+			}
+		</script>
 	</head>
-	<body
-		class="h-screen w-screen bg-white text-gray-800 font-sans flex items-center justify-center"
-	>
-		<main class="w-full max-w-md text-center p-8 space-y-10">
-			<!-- Foto -->
-			<div
-				class="relative w-28 h-28 mx-auto rounded-full overflow-hidden shadow-md group"
-			>
-				<!-- Imagen principal -->
-				<img
-					src="/yakindario.jpeg"
-					alt="Yakin Dario"
-					class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-				/>
-				<!-- Imagen al hacer hover -->
-				<img
-					src="/yakindario1.jpeg"
-					alt="Yakin Dario 8-bits"
-					class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-				/>
-			</div>
-
-			<!-- Nombre -->
-			<div>
-				<h1 class="text-3xl font-semibold tracking-tight">
-					Yakin Dario
-				</h1>
-				<p class="text-sm font-semibold text-gray-500 mt-1">
-					@yakindario
-				</p>
-			</div>
-
-			<!-- Info -->
-			<section>
-				<h2 class="text-sm uppercase tracking-wide text-gray-500 mb-2">
-					Información
-				</h2>
-				<p class="text-gray-600 text-sm leading-relaxed">
-					💻 Telecommunications Engineer | ☁️ Cloud Enthusiast |
-					Full-Stack Developer <br />
-					🌍 Puerto Vallarta, Jalisco, Mexico
-					<br />
-					🇲🇽 🎓 Degree in Telematics Engineering
-				</p>
-			</section>
-
-			<!-- Redes -->
-			<section>
-				<h2 class="text-sm uppercase tracking-wide text-gray-500 mb-2">
-					Redes
-				</h2>
-				<SocialIcons />
-			</section>
-
-			<!-- Futuro actualizacion -->
-			<!-- <section
-				class="flex justify-center gap-8 text-sm font-medium text-blue-600"
-			>
-				<a href="#" class="hover:underline">Proyectos</a>
-				<a href="#" class="hover:underline">CV</a>
-			</section> -->
-		</main>
+	<body class="bg-gray-50 text-gray-800 font-sans">
+		<div class="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] opacity-20"></div>
+		
+		<main class="min-h-screen flex items-center justify-center p-4">
+			<slot /> </main>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

@@ -1,11 +1,117 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import LinkButton from '../components/LinkButton.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// 1. Importamos los iconos
+import { 
+    Github, 
+    Linkedin, 
+    Twitter, 
+    Instagram, 
+    Mail, 
+    FileText, 
+    PcCase 
+} from 'lucide-react';
+
+// 2. Lista de links con los COMPONENTES de iconos
+const links = [
+    { 
+        title: "Instagram", 
+        href: "https://www.instagram.com/yakindario/", 
+        Icon: Instagram 
+    },
+    { 
+        title: "GitHub", 
+        href: "https://github.com/yakindario", 
+        Icon: Github 
+    },
+    { 
+        title: "LinkedIn", 
+        href: "https://www.linkedin.com/in/yakindario/", 
+        Icon: Linkedin 
+    },
+    { 
+        title: "Twitter / X", 
+        href: "https://x.com/yakindario", 
+        Icon: Twitter 
+    },
+	    { 
+        title: "Contactar por Email", 
+        href: "yakindario@gmail.com", 
+        Icon: Mail 
+    },
+    { 
+        title: "Ver Blog Técnico", 
+        href: "https://yakindario.me", 
+        Icon: PcCase 
+    },
+    /*{ 
+        title: "Descargar CV", 
+        href: "/cv.pdf", 
+        Icon: FileText 
+    },*/
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Yakin Dario | Links">
+    <div class="w-full max-w-md mx-auto animate-fadeIn">
+        
+        <div class="text-center mb-8">
+            <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-xl ring-4 ring-white/50 group cursor-pointer">
+                <img
+                    src="/yakindario.jpeg"
+                    alt="Yakin Dario"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                />
+                <img
+                    src="/yakindario1.jpeg"
+                    alt="Yakin Dario Pixel Art"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+            </div>
+
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+                Yakin Dario
+            </h1>
+            <p class="text-sm font-medium text-blue-600 mb-4">
+                @yakindario
+            </p>
+            
+            <p class="text-gray-600 text-sm leading-relaxed max-w-xs mx-auto mb-6">
+                💻 Telecommunications Engineer <br/>
+                ☁️ Cloud Enthusiast & DevOps <br/>
+				 🖥️Full-Stack Developer <br/>
+                🌍 Puerto Vallarta, México
+            </p>
+        </div>
+
+        <section class="flex flex-col gap-2">
+            {links.map((link) => (
+                /* NOTA: Aquí es donde estaba el detalle. 
+                   Usamos Icon={link.Icon} (Con mayúscula) 
+                   para pasar el componente correctamente.
+                */
+                <LinkButton 
+                    href={link.href} 
+                    title={link.title} 
+                    Icon={link.Icon} 
+                />
+            ))}
+        </section>
+
+        <footer class="mt-12 text-center text-xs text-gray-400">
+            <p>© {new Date().getFullYear()} Yakin Dario. Hecho con Astro 🚀</p>
+        </footer>
+
+    </div>
 </Layout>
+
+<style>
+    .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  Icon?: any;
+}
+
+const { href, title, Icon } = Astro.props;
+
+// Lógica inteligente:
+// Si empieza con '/', es interno (se abre en la misma pestaña).
+// Si no, es externo (se abre en pestaña nueva).
+const isInternal = href.startsWith('/');
+const target = isInternal ? '_self' : '_blank';
+const rel = isInternal ? undefined : 'noopener noreferrer';
+---
+
+<a
+  href={href}
+  target={target}
+  rel={rel}
+  class="group relative flex items-center justify-center w-full px-6 py-4 mb-3 overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md hover:border-gray-300 hover:-translate-y-0.5"
+>
+  <span class="flex items-center gap-3 text-gray-700 font-medium group-hover:text-black">
+    {Icon && <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />}
+    {title}
+  </span>
+</a>
